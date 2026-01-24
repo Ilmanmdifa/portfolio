@@ -1,11 +1,21 @@
 import Navigation from "../layouts/Navigation";
 import Footer from "../layouts/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 export default function About() {
   const [activeTab, setActiveTab] = useState<"journey" | "skills">("journey");
-  window.scrollTo(0, 0);
+  usePageTitle({
+    title: "About Me",
+    description:
+      "Learn about my journey, skills, and experience in web development.",
+    ogImage: "/og-about.jpg",
+  });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const skills = [
     {

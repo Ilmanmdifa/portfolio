@@ -2,21 +2,23 @@ import { useParams } from "react-router-dom";
 import Navigation from "../layouts/Navigation";
 import { projects } from "../data/projects";
 import { useEffect, useState } from "react";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 export default function ProjectDetailPage() {
   const { projectId } = useParams();
   const project = projects.find((p) => p.id === projectId);
   const [imageLoaded, setImageLoaded] = useState(false);
+  usePageTitle({
+    title: project ? project.title : "Project Not Found",
+    description: project
+      ? project.description || "Check out this project"
+      : "Project not found",
+    ogImage: project?.thumbnailImage,
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (project) {
-      document.title = `${project.title} | Ilman`;
-    }
-    return () => {
-      document.title = "Ilman | Web Dev";
-    };
-  }, [project, projectId]);
+  }, []);
 
   if (!project) {
     return (

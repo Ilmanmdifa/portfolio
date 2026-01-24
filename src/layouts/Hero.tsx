@@ -4,6 +4,7 @@ import arrowDown from "../assets/images/content/arrow-down-solid-full.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faFileLines } from "@fortawesome/free-regular-svg-icons";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -39,22 +40,22 @@ const Hero = () => {
 
           {/* CTA BUTTONS */}
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <a
-              href="https://drive.google.com/file/d/10mr5z-jNuIh9PjEXqvUwlgum7WxTvM3h/view?usp=sharing"
+            <Link
+              to={import.meta.env.VITE_RESUME_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 px-6 py-3 bg-[#6f76fd] text-white rounded-lg font-medium hover:bg-[#5a63e8] transition-all hover:shadow-lg active:scale-95"
             >
               <FontAwesomeIcon icon={faFileLines} />
               <span>Resume</span>
-            </a>
+            </Link>
 
-            <a
-              href="#project-section"
+            <Link
+              to="#project-section"
               className="flex items-center justify-center gap-2 px-6 py-3 border border-gray-300 text-gray-900 rounded-lg font-medium hover:bg-gray-50 transition-all active:scale-95"
             >
               <span>View Work</span>
-            </a>
+            </Link>
           </div>
 
           {/* SOCIAL LINKS */}
@@ -80,7 +81,7 @@ const Hero = () => {
                 <FontAwesomeIcon icon={faGithub} size="lg" />
               </a>
               <a
-                href="mailto:your-email@example.com"
+                href="mailto:ilmanmdifa63@gmail.com"
                 className="w-10 h-10 rounded-full bg-gray-900 text-white flex items-center justify-center hover:bg-[#6f76fd] transition-all hover:scale-110 active:scale-95"
                 aria-label="Email"
               >
