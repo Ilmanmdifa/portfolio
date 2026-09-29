@@ -1,12 +1,61 @@
 import type { Project } from "../types/project";
 import nextProDemoThumbnail from "../assets/images/content/project-detail/generated-my-blog-compressed.jpg";
-import placeHolderDemo from "../assets/images/content/project-detail/placeholder-temporary.jpg";
+import placeHolderDemo from "../assets/images/content/project-detail/placeholder-demo.svg";
 import caffiendThumbnail from "../assets/images/content/card/caffiend_thumbnail.jpg";
 import personalNotesThumbnail from "../assets/images/content/card/personalNotes_thumbnail.jpg";
 import nextProBlogThumbnail from "../assets/images/content/card/nextProBlog_thumbnail.jpg";
 import simpleInventoryThumbnail from "../assets/images/content/card/simpleInventory_thumbnail.jpg";
+import modernPortfolioThumbnail from "../assets/images/content/card/modern-portfolio-thumbnail.webp";
 
 export const projects: Project[] = [
+  {
+    id: "modern-js-portfolio",
+    title: "Modern Portfolio",
+    description:
+      "A modern, responsive React + Vite portfolio template showcasing projects, experience, testimonials, and a working EmailJS contact form.",
+    overview:
+      "This portfolio site is built with React + Vite and styled with Tailwind CSS. It features a multi‑section one‑page layout (Hero, About, Projects, Experience, Testimonials, Contact), animated UI flourishes, a project showcase with hover overlay links, and a full contact form powered by EmailJS.",
+    flows: [
+      "Load the landing page and view the animated hero section with skill marquee",
+      "Navigate via the sticky navbar to About, Projects, Experience, Testimonials, and Contact sections",
+      "Browse featured projects, hover to reveal live/demo and GitHub action links",
+      "Send a message through the contact form (EmailJS) and view success/error feedback",
+    ],
+    techStack: [
+      "React (Vite)",
+      "Tailwind CSS",
+      "EmailJS (emailjs/browser)",
+      "Lucide React icons",
+      "JavaScript / JSX",
+      "Responsive UI (CSS Grid/Flex)",
+    ],
+    features: [
+      "One‑page portfolio layout with animated sections & scroll navigation",
+      "Reusable UI components (Navbar, Button, AnimatedBorderButton, Footer)",
+      "Project cards with hover overlay actions and tag badges",
+      "Contact form with validation, loading states, and success/error alerts",
+      "Responsive design with modern glassmorphism styling and motion effects",
+    ],
+    challenges:
+      "There's part I need to create new class animation for styling, I can understand how to create animation by learn keyframes work and also I learned how to use emailjs for main contact feature.",
+    image: placeHolderDemo,
+    thumbnailImage: modernPortfolioThumbnail,
+    tags: [
+      "React",
+      "Vite",
+      "Tailwind",
+      "EmailJS",
+      "Responsive",
+      "UI",
+      "Portfolio",
+      "Animations",
+    ],
+    demoUrl: "https://modern-js-portfolio-zkkp.vercel.app/",
+    githubUrl: "https://github.com/Ilmanmdifa/modern-js-portfolio",
+    status: "completed",
+    version: "1.0.0",
+    createdAt: "2026-03-12",
+  },
   {
     id: "caffiend",
     title: "Caffiend — Coffee Tracker",
@@ -139,7 +188,7 @@ export const projects: Project[] = [
       "Responsive, accessible UI primitives",
     ],
     challenges:
-      "It's my second time building an app using nextjs, i have a problem in production which is wrong input key, i fix this by check the entire code and deployment log. and also the user need to hard refresh to access the main content, i still try to fix this",
+      "It's my second time building an app using nextjs, I have a problem in production which is wrong input key, I fix this by check the entire code and deployment log and also the user need to hard refresh to access the main content, I'm still trying to fix this.",
     image: nextProDemoThumbnail,
     thumbnailImage: nextProBlogThumbnail,
     tags: [
@@ -205,7 +254,7 @@ export const projects: Project[] = [
       "Responsive design for mobile and desktop",
     ],
     challenges:
-      "Learning and manipulate charts using Recharts library, implementing pagination",
+      "Learning and manipulate charts using Recharts library, implementing pagination.",
     image: placeHolderDemo,
     thumbnailImage: simpleInventoryThumbnail,
     tags: [

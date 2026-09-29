@@ -27,7 +27,7 @@ const Content = () => {
         <div className="mt-20 pt-16 border-t border-gray-200 text-center">
           <p className="text-gray-600 mb-6">Interested in working together?</p>
           <Link
-            to="/about"
+            to="mailto:ilmanmdifa63@gmail.com"
             className="inline-block px-8 py-3 bg-[#6f76fd] text-white rounded-lg font-medium hover:bg-[#5a63e8] transition-all hover:shadow-lg active:scale-95"
           >
             Get in Touch
