@@ -1,18 +1,42 @@
 import { useState } from "react";
 import { NavLink } from "../components/Nav/NavLink";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { projects } from "../data/projects";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
+const MAX_DROPDOWN_PROJECTS = 5;
+
+const statusRank: Record<string, number> = {
+  completed: 0,
+  "in-development": 1,
+  planned: 2,
+};
+
 const Navigation = () => {
+  const { pathname } = useLocation();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [lastPathname, setLastPathname] = useState(pathname);
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
     setDropdownOpen(false);
   };
+
+  // Tutup semua menu setiap pindah route (pola adjust-during-render React:
+  // aman karena bersyarat, tidak looping)
+  if (lastPathname !== pathname) {
+    setLastPathname(pathname);
+    setDropdownOpen(false);
+    setMobileMenuOpen(false);
+  }
+
+  const visibleProjects = [...projects]
+    .sort(
+      (a, b) => (statusRank[a.status] ?? 3) - (statusRank[b.status] ?? 3)
+    )
+    .slice(0, MAX_DROPDOWN_PROJECTS);
 
   return (
     <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur-md shadow-sm">
@@ -38,9 +62,9 @@ const Navigation = () => {
                 Projects
               </button>
               {isDropdownOpen && (
-                <div className="absolute left-0 top-full mt-0 w-72 bg-white shadow-xl rounded-lg border border-gray-200 z-10 overflow-hidden">
+                <div className="absolute left-0 top-full mt-0 w-72 max-h-96 overflow-y-auto bg-white shadow-xl rounded-lg border border-gray-200 z-10 overflow-hidden">
                   <div className="p-2">
-                    {projects.map((project, index) => (
+                    {visibleProjects.map((project, index) => (
                       <Link
                         key={project.id}
                         to={`/projects/${project.id}`}
@@ -53,11 +77,20 @@ const Navigation = () => {
                         <p className="text-xs text-gray-600 line-clamp-1">
                           {project.description}
                         </p>
-                        {index < projects.length - 1 && (
+                        {index < visibleProjects.length - 1 && (
                           <div className="border-b border-gray-100 mt-2" />
                         )}
                       </Link>
                     ))}
+                    {projects.length > MAX_DROPDOWN_PROJECTS && (
+                      <Link
+                        to="/#project-section"
+                        onClick={() => setDropdownOpen(false)}
+                        className="block p-3 rounded-lg text-sm font-semibold text-[#6f76fd] hover:bg-gray-50 transition-colors text-center"
+                      >
+                        View all {projects.length} projects →
+                      </Link>
+                    )}
                   </div>
                 </div>
               )}
