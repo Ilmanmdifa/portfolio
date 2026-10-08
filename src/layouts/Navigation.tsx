@@ -7,12 +7,6 @@ import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const MAX_DROPDOWN_PROJECTS = 5;
 
-const statusRank: Record<string, number> = {
-  completed: 0,
-  "in-development": 1,
-  planned: 2,
-};
-
 const Navigation = () => {
   const { pathname } = useLocation();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -32,11 +26,9 @@ const Navigation = () => {
     setMobileMenuOpen(false);
   }
 
-  const visibleProjects = [...projects]
-    .sort(
-      (a, b) => (statusRank[a.status] ?? 3) - (statusRank[b.status] ?? 3)
-    )
-    .slice(0, MAX_DROPDOWN_PROJECTS);
+  // Urutan = urutan array (kurasi manual, sama seperti homepage).
+  // Satu sumber kebenaran: tambah/geser project cukup di data.
+  const visibleProjects = projects.slice(0, MAX_DROPDOWN_PROJECTS);
 
   return (
     <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur-md shadow-sm">
