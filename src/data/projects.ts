@@ -5,9 +5,61 @@ import caffiendThumbnail from "../assets/images/content/card/caffiend_thumbnail.
 import personalNotesThumbnail from "../assets/images/content/card/personalNotes_thumbnail.jpg";
 import nextProBlogThumbnail from "../assets/images/content/card/nextProBlog_thumbnail.jpg";
 import simpleInventoryThumbnail from "../assets/images/content/card/simpleInventory_thumbnail.jpg";
+import platformerThumbnail from "../assets/images/content/card/platformer_thumbnail.png";
+import vampireThumbnail from "../assets/images/content/card/vampire_thumbnail.png";
 import modernPortfolioThumbnail from "../assets/images/content/card/modern-portfolio-thumbnail.webp";
+import tuntasThumbnail from "../assets/images/content/card/tuntas_thumbnail.jpg";
 
 export const projects: Project[] = [
+  {
+    id: "tuntas",
+    title: "Tuntas — Team Todo Collaboration",
+    description:
+      "A Laravel todo app for personal tasks and team boards: per-user isolation, teams with invites, assigned-task notifications, priorities, and deadlines.",
+    overview:
+      "Tuntas (Indonesian for thoroughly done) is a server-rendered Laravel app with per-user todo isolation, team boards with member roles, invite flows with status guards, database notifications with a hybrid bell, and todo details with priority, due dates, and descriptions. Authorization is enforced through policies, validation through Form Requests, and the suite holds 18 passing feature tests.",
+    flows: [
+      "Register and manage personal todos with priority, due date, and description",
+      "Create a team, invite members, and assign team todos with notifications",
+      "Accept or decline invites from the bell or the invites page",
+      "Filter by overdue, search title and description, and open the detail page",
+    ],
+    techStack: [
+      "Laravel 11",
+      "PHP 8.5",
+      "SQLite",
+      "Blade + Tailwind CSS",
+      "Alpine.js",
+      "Vite",
+      "PHPUnit (18 feature tests)",
+    ],
+    features: [
+      "Per-user data isolation with query scoping",
+      "Team boards with owner/member roles and paginated lists",
+      "Invite lifecycle (pending/accepted/declined) with duplicate prevention",
+      "Hybrid notifications: bell dropdown tabs plus a full page",
+      "Todo details, overdue filter, and full-text-ish search with retained queries",
+      "Policy-based authorization on every write path",
+    ],
+    challenges:
+      "Serving absolute asset URLs behind an ngrok tunnel broke all styling in production-like conditions; tracing it exposed a missing TrustProxies setup and a wrong APP_URL-first theory before the one-line fix.",
+    image: placeHolderDemo,
+    thumbnailImage: tuntasThumbnail,
+    tags: [
+      "Laravel",
+      "PHP",
+      "SQLite",
+      "Blade",
+      "Tailwind",
+      "Authorization",
+      "PHPUnit",
+      "Teams",
+    ],
+    githubUrl: "https://github.com/Ilmanmdifa/tuntas",
+    status: "in-development",
+    version: "0.9.0",
+    createdAt: "2026-09-29",
+  },
   {
     id: "modern-js-portfolio",
     title: "Modern Portfolio",
@@ -102,6 +154,92 @@ export const projects: Project[] = [
     status: "completed",
     version: "1.0.0",
     createdAt: "2025-04-27",
+  },
+  {
+    id: "2d-platformer",
+    title: "2D Platformer",
+    description:
+      "A Godot 2D platformer covering the fundamentals: character physics, patrolling enemies, pickups, hazards, and game state.",
+    overview:
+      "A learning build in Godot 4 focused on platformer fundamentals: a CharacterBody2D player with run, jump, and gravity; a slime enemy with patrol behavior; coin pickups with a score counter; kill zones; and a game manager holding state.",
+    flows: [
+      "Run and jump across platforms with gravity-based physics",
+      "Dodge or stomp the patrolling slime enemy",
+      "Collect coins to raise the score",
+      "Fall in a kill zone to trigger game over state",
+    ],
+    techStack: [
+      "Godot 4",
+      "GDScript",
+      "CharacterBody2D physics",
+      "Area2D signals",
+      "Scene tree + game manager",
+    ],
+    features: [
+      "Player run, jump, and gravity tuning",
+      "Enemy patrol movement",
+      "Coin pickup with score counter",
+      "Kill zones and game-over flow",
+    ],
+    challenges:
+      "Tuning jump feel (gravity vs jump velocity) and learning how Godot signals connect pickups, hazards, and score without tight coupling.",
+    image: placeHolderDemo,
+    thumbnailImage: platformerThumbnail,
+    tags: [
+      "Godot",
+      "GDScript",
+      "Game Dev",
+      "2D",
+      "Physics",
+      "Platformer",
+    ],
+    githubUrl: "https://github.com/Ilmanmdifa/2d-platformer",
+    status: "completed",
+    version: "1.0.0",
+    createdAt: "2026-09-30",
+  },
+  {
+    id: "vampire-survivor",
+    title: "Vampire Survivor Style",
+    description:
+      "A Godot wave-survival prototype: 8-direction movement, chasing enemies, auto-aim shooting, and escalating waves with scoring.",
+    overview:
+      "A Vampire-Survivor-style prototype in Godot 4 built to learn real-time simulation: an 8-direction player, mobs with chase AI and spawning, an auto-aiming gun firing projectiles, and a game manager escalating waves and score.",
+    flows: [
+      "Move in 8 directions to kite incoming mobs",
+      "Let the auto-aim gun clear nearby enemies",
+      "Survive escalating waves while the score climbs",
+    ],
+    techStack: [
+      "Godot 4",
+      "GDScript",
+      "Enemy chase AI",
+      "Spawning + waves",
+      "Projectiles",
+      "Score state",
+    ],
+    features: [
+      "8-direction player movement",
+      "Chasing mobs with spawn manager",
+      "Auto-aim gun with projectiles",
+      "Wave escalation and scoring",
+    ],
+    challenges:
+      "Balancing mob speed/count against player kiting space, and keeping per-frame chase math cheap as enemy counts grow.",
+    image: placeHolderDemo,
+    thumbnailImage: vampireThumbnail,
+    tags: [
+      "Godot",
+      "GDScript",
+      "Game Dev",
+      "2D",
+      "AI",
+      "Survival",
+    ],
+    githubUrl: "https://github.com/Ilmanmdifa/2d-vampire-survivor-style",
+    status: "completed",
+    version: "1.0.0",
+    createdAt: "2026-09-30",
   },
   {
     id: "personal-notes",
