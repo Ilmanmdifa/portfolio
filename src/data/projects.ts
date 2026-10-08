@@ -108,14 +108,13 @@ export const projects: Project[] = [
     title: "Personal Notes",
     description:
       "A single-page notes app with authentication, CRUD for notes, archiving, localization and light/dark themes.",
-    overview: "React + Vite SPA that talks to the Dicoding Notes API",
+    overview: "React + Vite SPA using the Dicoding Notes API: email auth with token storage, notes CRUD, archive/unarchive lists with search, detail view, EN/ID localization, and light/dark themes.",
     flows: [
-      "Authentication: register/login -> token stored",
-      "Create note: open",
-      "Read / Update",
-      "Archive / Unarchive: actions call",
-      "Delete",
-      "Search & Navigation",
+      "Register or log in, token stored for API calls",
+      "Create a note with title (50-char limit) and body",
+      "Search across title and body on active and archived lists",
+      "Archive, unarchive, open detail, or delete with confirm",
+      "Switch language (EN/ID) and theme (light/dark), persisted locally",
     ],
     techStack: [
       "Frontend: React (hooks + context)",
@@ -135,7 +134,7 @@ export const projects: Project[] = [
       "Theme toggle (light/dark)",
     ],
     challenges:
-      "Handled time arithmetic and decay modeling; ensured safe defaults for absent user data and fixed a minutes-to-milliseconds bug in the input handling.",
+      "Shipping auth states honestly: every async state (loading, empty, error) got its own UI instead of silent failures, plus a 404 route and archived-list parity with the main list.",
     image: placeHolderDemo,
     thumbnailImage: personalNotesThumbnail,
     tags: [
@@ -201,7 +200,6 @@ export const projects: Project[] = [
       "Image Upload",
       "Zod",
       "React Hook Form",
-      "Image Upload",
       "Search",
       "Server Actions",
     ],
