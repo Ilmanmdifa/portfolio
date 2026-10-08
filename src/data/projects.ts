@@ -156,6 +156,92 @@ export const projects: Project[] = [
     createdAt: "2025-04-27",
   },
   {
+    id: "2d-platformer",
+    title: "2D Platformer",
+    description:
+      "A Godot 2D platformer covering the fundamentals: character physics, patrolling enemies, pickups, hazards, and game state.",
+    overview:
+      "A learning build in Godot 4 focused on platformer fundamentals: a CharacterBody2D player with run, jump, and gravity; a slime enemy with patrol behavior; coin pickups with a score counter; kill zones; and a game manager holding state.",
+    flows: [
+      "Run and jump across platforms with gravity-based physics",
+      "Dodge or stomp the patrolling slime enemy",
+      "Collect coins to raise the score",
+      "Fall in a kill zone to trigger game over state",
+    ],
+    techStack: [
+      "Godot 4",
+      "GDScript",
+      "CharacterBody2D physics",
+      "Area2D signals",
+      "Scene tree + game manager",
+    ],
+    features: [
+      "Player run, jump, and gravity tuning",
+      "Enemy patrol movement",
+      "Coin pickup with score counter",
+      "Kill zones and game-over flow",
+    ],
+    challenges:
+      "Tuning jump feel (gravity vs jump velocity) and learning how Godot signals connect pickups, hazards, and score without tight coupling.",
+    image: placeHolderDemo,
+    thumbnailImage: platformerThumbnail,
+    tags: [
+      "Godot",
+      "GDScript",
+      "Game Dev",
+      "2D",
+      "Physics",
+      "Platformer",
+    ],
+    githubUrl: "https://github.com/Ilmanmdifa/2d-platformer",
+    status: "completed",
+    version: "1.0.0",
+    createdAt: "2026-09-30",
+  },
+  {
+    id: "vampire-survivor",
+    title: "Vampire Survivor Style",
+    description:
+      "A Godot wave-survival prototype: 8-direction movement, chasing enemies, auto-aim shooting, and escalating waves with scoring.",
+    overview:
+      "A Vampire-Survivor-style prototype in Godot 4 built to learn real-time simulation: an 8-direction player, mobs with chase AI and spawning, an auto-aiming gun firing projectiles, and a game manager escalating waves and score.",
+    flows: [
+      "Move in 8 directions to kite incoming mobs",
+      "Let the auto-aim gun clear nearby enemies",
+      "Survive escalating waves while the score climbs",
+    ],
+    techStack: [
+      "Godot 4",
+      "GDScript",
+      "Enemy chase AI",
+      "Spawning + waves",
+      "Projectiles",
+      "Score state",
+    ],
+    features: [
+      "8-direction player movement",
+      "Chasing mobs with spawn manager",
+      "Auto-aim gun with projectiles",
+      "Wave escalation and scoring",
+    ],
+    challenges:
+      "Balancing mob speed/count against player kiting space, and keeping per-frame chase math cheap as enemy counts grow.",
+    image: placeHolderDemo,
+    thumbnailImage: vampireThumbnail,
+    tags: [
+      "Godot",
+      "GDScript",
+      "Game Dev",
+      "2D",
+      "AI",
+      "Survival",
+    ],
+    githubUrl: "https://github.com/Ilmanmdifa/2d-vampire-survivor-style",
+    status: "completed",
+    version: "1.0.0",
+    createdAt: "2026-09-30",
+  },
+  {
     id: "personal-notes",
     title: "Personal Notes",
     description:
@@ -326,91 +412,5 @@ export const projects: Project[] = [
     status: "in-development",
     version: "0.1.0",
     createdAt: "2026-01-14",
-  },
-  {
-    id: "2d-platformer",
-    title: "2D Platformer",
-    description:
-      "A Godot 2D platformer covering the fundamentals: character physics, patrolling enemies, pickups, hazards, and game state.",
-    overview:
-      "A learning build in Godot 4 focused on platformer fundamentals: a CharacterBody2D player with run, jump, and gravity; a slime enemy with patrol behavior; coin pickups with a score counter; kill zones; and a game manager holding state.",
-    flows: [
-      "Run and jump across platforms with gravity-based physics",
-      "Dodge or stomp the patrolling slime enemy",
-      "Collect coins to raise the score",
-      "Fall in a kill zone to trigger game over state",
-    ],
-    techStack: [
-      "Godot 4",
-      "GDScript",
-      "CharacterBody2D physics",
-      "Area2D signals",
-      "Scene tree + game manager",
-    ],
-    features: [
-      "Player run, jump, and gravity tuning",
-      "Enemy patrol movement",
-      "Coin pickup with score counter",
-      "Kill zones and game-over flow",
-    ],
-    challenges:
-      "Tuning jump feel (gravity vs jump velocity) and learning how Godot signals connect pickups, hazards, and score without tight coupling.",
-    image: placeHolderDemo,
-    thumbnailImage: platformerThumbnail,
-    tags: [
-      "Godot",
-      "GDScript",
-      "Game Dev",
-      "2D",
-      "Physics",
-      "Platformer",
-    ],
-    githubUrl: "https://github.com/Ilmanmdifa/2d-platformer",
-    status: "completed",
-    version: "1.0.0",
-    createdAt: "2026-09-30",
-  },
-  {
-    id: "vampire-survivor",
-    title: "Vampire Survivor Style",
-    description:
-      "A Godot wave-survival prototype: 8-direction movement, chasing enemies, auto-aim shooting, and escalating waves with scoring.",
-    overview:
-      "A Vampire-Survivor-style prototype in Godot 4 built to learn real-time simulation: an 8-direction player, mobs with chase AI and spawning, an auto-aiming gun firing projectiles, and a game manager escalating waves and score.",
-    flows: [
-      "Move in 8 directions to kite incoming mobs",
-      "Let the auto-aim gun clear nearby enemies",
-      "Survive escalating waves while the score climbs",
-    ],
-    techStack: [
-      "Godot 4",
-      "GDScript",
-      "Enemy chase AI",
-      "Spawning + waves",
-      "Projectiles",
-      "Score state",
-    ],
-    features: [
-      "8-direction player movement",
-      "Chasing mobs with spawn manager",
-      "Auto-aim gun with projectiles",
-      "Wave escalation and scoring",
-    ],
-    challenges:
-      "Balancing mob speed/count against player kiting space, and keeping per-frame chase math cheap as enemy counts grow.",
-    image: placeHolderDemo,
-    thumbnailImage: vampireThumbnail,
-    tags: [
-      "Godot",
-      "GDScript",
-      "Game Dev",
-      "2D",
-      "AI",
-      "Survival",
-    ],
-    githubUrl: "https://github.com/Ilmanmdifa/2d-vampire-survivor-style",
-    status: "completed",
-    version: "1.0.0",
-    createdAt: "2026-09-30",
   },
 ];
