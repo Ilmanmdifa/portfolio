@@ -1,8 +1,9 @@
 import Navigation from "../layouts/Navigation";
 import Footer from "../layouts/Footer";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { usePageTitle } from "../hooks/usePageTitle";
+
+const resumeUrl = import.meta.env.VITE_RESUME_URL as string | undefined;
 
 export default function About() {
   const [activeTab, setActiveTab] = useState<"journey" | "skills">("journey");
@@ -21,42 +22,47 @@ export default function About() {
     {
       category: "Frontend",
       items: [
-        "React",
+        "React (Hooks, Zustand)",
         "Next.js (App Router)",
-        "TypeScript",
-        "JavaScript",
+        "TypeScript (ES6+)",
         "Tailwind CSS",
-        "CSS",
+        "Semantic HTML",
+        "Responsive Mobile-First",
         "Vite",
         "React Router",
-        "React Hook Form",
+        "React Hook Form + Zod",
         "Radix UI",
         "Recharts",
+        "Accessibility (ARIA)",
       ],
     },
     {
       category: "Backend",
       items: [
-        "Node.js",
-        "Express",
-        "Firebase",
+        "PHP",
+        "Laravel (Blade, Policies, Form Requests)",
+        "Bagisto",
+        "REST API Integration",
+        "Node.js (Basic)",
         "Convex",
-        "Prisma ORM",
-        "PostgreSQL",
-        "Stack Auth",
-        "Better Auth",
+        "PostgreSQL + Prisma",
+        "SQLite + PHPUnit",
+        "Firebase Auth + Firestore",
+        "Stack Auth / Better Auth",
       ],
     },
     {
-      category: "Tools",
+      category: "Practices & Tools",
       items: [
-        "Git",
-        "GitHub",
-        "REST APIs",
-        "Vercel",
+        "Git + Branching Workflow",
+        "Agile Scrum",
+        "Clean Code + Refactoring",
+        "Debugging (Prod)",
         "ESLint",
-        "Figma",
+        "Figma to Wireframe",
         "Postman",
+        "Vercel + Netlify",
+        "OpenSpec Reviews",
       ],
     },
   ];
@@ -64,28 +70,33 @@ export default function About() {
   const timeline = [
     {
       year: "2026",
-      title: "Independent Full-stack Projects",
-      desc: "Building and shipping personal web applications to strengthen real-world development skills",
+      title: "Independent Full-stack Projects — Present",
+      desc: "Back to independent work after EDP; applying Laravel/Bagisto discipline to React, Next.js, and team-todo collaboration builds",
+    },
+    {
+      year: "2026",
+      title: "Fullstack Engineer (EDP) — gits.id",
+      desc: "Apr to Jul 2026 program; spec + interactive wireframe from Figma; fixed production bugs on product filter, admin permissions, and role-based rendering; adapted from JavaScript to PHP/Laravel/Bagisto; Agile Scrum with Git branching and OpenSpec reviews",
     },
     {
       year: "2025",
-      title: "Fullstack JavaScript Bootcamp in harisenin",
-      desc: "Learn by building projects using modern JavaScript technologies",
+      title: "Fullstack JavaScript Bootcamp — harisenin",
+      desc: "Project-based modern JavaScript, React, and Next.js with reusable component architecture",
     },
     {
       year: "2024",
-      title: "React Developer Path in Dicoding",
-      desc: "Learn from basics to advanced React development through hands-on projects",
+      title: "React Developer Path — Dicoding",
+      desc: "React basics to advanced through hands-on projects including auth, REST API, localization, and theming",
     },
     {
       year: "2024",
       title: "Informatics Engineering Graduate",
-      desc: "Learn web development fundamentals",
+      desc: "Cybersecurity specialization; phishing-awareness research informing secure-by-default coding",
     },
     {
-      year: "2023",
-      title: "Cybersecurity Research for thesis",
-      desc: "Phishing awareness study with real-world simulations",
+      year: "2022",
+      title: "Web Developer — Apotek Sumber Berkah",
+      desc: "Online-store CMS with CodeIgniter 3 + Bootstrap 4; integrated online/offline ordering flow",
     },
   ];
 
@@ -100,11 +111,13 @@ export default function About() {
               About Me
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed max-w-2xl">
-              Full-stack JavaScript developer focused on building{" "}
+              Fullstack developer with experience building and maintaining web
+              applications using{" "}
               <span className="text-[#6f76fd] font-semibold">
-                reliable, maintainable, and user-centered
-              </span>{" "}
-              web applications.
+                JavaScript, React, Next.js, PHP, Laravel, and Bagisto
+              </span>
+              . Comfortable fixing production bugs and shipping role-based
+              features in live e-commerce systems.
             </p>
           </div>
 
@@ -112,10 +125,11 @@ export default function About() {
           <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 md:p-10 rounded-xl border border-gray-200 mb-20">
             <p className="text-gray-700 leading-relaxed text-lg">
               I have hands-on experience developing responsive frontends and
-              structured backend services. During my studies, I chose a
-              cybersecurity specialization, which provided a strong academic
-              foundation in secure systems and informs my approach to writing
-              clean, robust code.
+              structured backend services, including production debugging on
+              product filters, admin-role permissions, and role-based UI
+              rendering. My cybersecurity specialization provides a strong
+              academic foundation in secure systems and informs my approach to
+              writing clean, robust code.
             </p>
           </div>
 
@@ -201,8 +215,8 @@ export default function About() {
                 Background
               </p>
               <p className="text-gray-700 leading-relaxed">
-                Academic coursework in cybersecurity, including phishing
-                awareness, shaped my interest in secure application design and
+                Production e-commerce debugging plus academic cybersecurity
+                background shape my interest in role-based access and
                 responsible data handling.
               </p>
             </div>
@@ -221,20 +235,22 @@ export default function About() {
 
           {/* CTA */}
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              to={import.meta.env.VITE_RESUME_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-[#6f76fd] text-white rounded-lg font-medium hover:bg-[#5a63e8] transition-all hover:shadow-lg active:scale-95 text-center"
-            >
-              Download Resume
-            </Link>
-            <Link
-              to="mailto:ilmanmdifa63@gmail.com"
+            {resumeUrl && (
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 bg-[#6f76fd] text-white rounded-lg font-medium hover:bg-[#5a63e8] transition-all hover:shadow-lg active:scale-95 text-center"
+              >
+                Download Resume
+              </a>
+            )}
+            <a
+              href="mailto:ilmanmdifa63@gmail.com"
               className="px-6 py-3 border border-gray-300 text-gray-900 rounded-lg font-medium hover:bg-gray-50 transition-all active:scale-95 text-center"
             >
               Get in Touch
-            </Link>
+            </a>
           </div>
         </div>
       </section>
