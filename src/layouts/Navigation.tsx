@@ -18,16 +18,20 @@ const Navigation = () => {
     setDropdownOpen(false);
   };
 
-  // Tutup semua menu setiap pindah route (pola adjust-during-render React:
-  // aman karena bersyarat, tidak looping)
+  // Close every menu on route change (adjust-during-render pattern:
+  // safe because it runs conditionally, no loop)
   if (lastPathname !== pathname) {
     setLastPathname(pathname);
     setDropdownOpen(false);
     setMobileMenuOpen(false);
   }
 
-  // Urutan = urutan array (kurasi manual, sama seperti homepage).
-  // Satu sumber kebenaran: tambah/geser project cukup di data.
+  // Resume URL lives outside the SPA router, so an empty value renders
+  // no link instead of falling back to "/".
+  const resumeUrl = import.meta.env.VITE_RESUME_URL as string | undefined;
+
+  // Order follows the data array (manual curation, same as homepage).
+  // Single source of truth: reorder projects in the data file only.
   const visibleProjects = projects.slice(0, MAX_DROPDOWN_PROJECTS);
 
   return (
@@ -75,13 +79,13 @@ const Navigation = () => {
                       </Link>
                     ))}
                     {projects.length > MAX_DROPDOWN_PROJECTS && (
-                      <Link
-                        to="/#project-section"
+                      <a
+                        href="/#project-section"
                         onClick={() => setDropdownOpen(false)}
                         className="block p-3 rounded-lg text-sm font-semibold text-[#6f76fd] hover:bg-gray-50 transition-colors text-center"
                       >
                         View all {projects.length} projects →
-                      </Link>
+                      </a>
                     )}
                   </div>
                 </div>
@@ -89,11 +93,9 @@ const Navigation = () => {
             </div>
 
             {/* Other Links */}
-            <NavLink
-              name="Resume"
-              href={import.meta.env.VITE_RESUME_URL}
-              targetLink="_blank"
-            />
+            {resumeUrl && (
+              <NavLink name="Resume" href={resumeUrl} targetLink="_blank" />
+            )}
             <NavLink name="About" href="/about" />
           </ul>
 
@@ -138,15 +140,17 @@ const Navigation = () => {
             </div>
 
             {/* Mobile Resume Link */}
-            <Link
-              to={import.meta.env.VITE_RESUME_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={closeMobileMenu}
-              className="block px-3 py-2 text-gray-700 hover:text-[#6f76fd] font-medium transition-colors rounded-lg hover:bg-gray-100"
-            >
-              Resume
-            </Link>
+            {resumeUrl && (
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMobileMenu}
+                className="block px-3 py-2 text-gray-700 hover:text-[#6f76fd] font-medium transition-colors rounded-lg hover:bg-gray-100"
+              >
+                Resume
+              </a>
+            )}
 
             {/* Mobile About Link */}
             <Link

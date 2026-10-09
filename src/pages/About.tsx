@@ -1,8 +1,9 @@
 import Navigation from "../layouts/Navigation";
 import Footer from "../layouts/Footer";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { usePageTitle } from "../hooks/usePageTitle";
+
+const resumeUrl = import.meta.env.VITE_RESUME_URL as string | undefined;
 
 export default function About() {
   const [activeTab, setActiveTab] = useState<"journey" | "skills">("journey");
@@ -234,20 +235,22 @@ export default function About() {
 
           {/* CTA */}
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              to={import.meta.env.VITE_RESUME_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-[#6f76fd] text-white rounded-lg font-medium hover:bg-[#5a63e8] transition-all hover:shadow-lg active:scale-95 text-center"
-            >
-              Download Resume
-            </Link>
-            <Link
-              to="mailto:ilmanmdifa63@gmail.com"
+            {resumeUrl && (
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 bg-[#6f76fd] text-white rounded-lg font-medium hover:bg-[#5a63e8] transition-all hover:shadow-lg active:scale-95 text-center"
+              >
+                Download Resume
+              </a>
+            )}
+            <a
+              href="mailto:ilmanmdifa63@gmail.com"
               className="px-6 py-3 border border-gray-300 text-gray-900 rounded-lg font-medium hover:bg-gray-50 transition-all active:scale-95 text-center"
             >
               Get in Touch
-            </Link>
+            </a>
           </div>
         </div>
       </section>
