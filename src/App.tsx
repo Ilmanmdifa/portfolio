@@ -2,6 +2,7 @@ import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/Home";
 import ProjectDetailPage from "./pages/ProjectDetail";
+import ProjectsPage from "./pages/Projects";
 import About from "./pages/About";
 
 function NotFound() {
@@ -18,6 +19,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/:projectId" element={<ProjectDetailPage />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />

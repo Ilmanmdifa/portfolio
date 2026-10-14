@@ -79,13 +79,13 @@ const Navigation = () => {
                       </Link>
                     ))}
                     {projects.length > MAX_DROPDOWN_PROJECTS && (
-                      <a
-                        href="/#project-section"
+                      <Link
+                        to="/projects"
                         onClick={() => setDropdownOpen(false)}
                         className="block p-3 rounded-lg text-sm font-semibold text-[#6f76fd] hover:bg-gray-50 transition-colors text-center"
                       >
-                        View all {projects.length} projects →
-                      </a>
+                        Browse all {projects.length} projects →
+                      </Link>
                     )}
                   </div>
                 </div>

@@ -227,7 +227,7 @@ export default function ProjectDetailPage() {
                   rel="noopener noreferrer"
                   className="px-6 py-3 bg-[#6f76fd] text-white rounded-lg font-medium hover:bg-[#5a63e8] transition-all hover:shadow-lg active:scale-95"
                 >
-                  Live Demo →
+                  Live Demo
                 </a>
               )}
               {project.githubUrl && (

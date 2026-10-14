@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import Card from "../components/Content/Card";
 import { projects } from "../data/projects";
 
 const FEATURED_COUNT = 4;
 
 const Content = () => {
-  const [showAll, setShowAll] = useState(false);
-  const visibleProjects = showAll ? projects : projects.slice(0, FEATURED_COUNT);
+  const visibleProjects = projects.slice(0, FEATURED_COUNT);
   return (
     <main className="w-full px-5 py-16 md:px-8 md:py-24 bg-white">
       <div className="max-w-6xl mx-auto">
@@ -29,15 +28,12 @@ const Content = () => {
 
         {projects.length > FEATURED_COUNT && (
           <div className="text-center mt-10">
-            <button
-              onClick={() => setShowAll((v) => !v)}
-              className="px-6 py-3 border border-gray-300 text-gray-900 rounded-lg font-medium hover:bg-gray-50 transition-all active:scale-95"
-              aria-expanded={showAll}
+            <Link
+              to="/projects"
+              className="inline-block px-6 py-3 border border-gray-300 text-gray-900 rounded-lg font-medium hover:bg-gray-50 transition-all active:scale-95"
             >
-              {showAll
-                ? "Show less"
-                : `View all ${projects.length} projects`}
-            </button>
+              {`Browse all projects`}
+            </Link>
           </div>
         )}
 
