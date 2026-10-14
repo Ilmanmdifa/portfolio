@@ -1,14 +1,14 @@
 import type { Project } from "../types/project";
 import nextProDemoThumbnail from "../assets/images/content/project-detail/generated-my-blog-compressed.jpg";
 import placeHolderDemo from "../assets/images/content/project-detail/placeholder-demo.svg";
-import caffiendThumbnail from "../assets/images/content/card/caffiend_thumbnail.jpg";
-import personalNotesThumbnail from "../assets/images/content/card/personalNotes_thumbnail.jpg";
-import nextProBlogThumbnail from "../assets/images/content/card/nextProBlog_thumbnail.jpg";
-import simpleInventoryThumbnail from "../assets/images/content/card/simpleInventory_thumbnail.jpg";
+import caffiendThumbnail from "../assets/images/content/card/caffiend_thumbnail.webp";
+import personalNotesThumbnail from "../assets/images/content/card/personalNotes_thumbnail.webp";
+import nextProBlogThumbnail from "../assets/images/content/card/nextProBlog_thumbnail.webp";
+import simpleInventoryThumbnail from "../assets/images/content/card/simpleInventory_thumbnail.webp";
 import platformerThumbnail from "../assets/images/content/card/platformer_thumbnail.png";
-import vampireThumbnail from "../assets/images/content/card/vampire_thumbnail.png";
+import vampireThumbnail from "../assets/images/content/card/vampire_thumbnail.webp";
 import modernPortfolioThumbnail from "../assets/images/content/card/modern-portfolio-thumbnail.webp";
-import tuntasThumbnail from "../assets/images/content/card/tuntas_thumbnail.jpg";
+import tuntasThumbnail from "../assets/images/content/card/tuntas_thumbnail.webp";
 
 export const projects: Project[] = [
   {
@@ -295,37 +295,41 @@ export const projects: Project[] = [
   },
   {
     id: "my-blog",
-    title: "NextPro — Full‑stack Blog",
+    title: "NextPro — Realtime Blog",
     description:
-      "A modern, full‑stack blog built with Next.js and Convex that supports authenticated posting, image uploads, real‑time presence, search, and threaded comments.",
+      "A realtime blog built with Next.js and Convex: public homepage with live stats, paginated posts, author-only CRUD with image uploads, realtime comments and presence, and header full-text search.",
     overview:
-      "NextPro is a portable blog/demo app showing how to build a performant Next.js front end with a Convex backend. The app uses server‑side and client hooks for Convex queries and mutations and integrates Better Auth for email/password auth.",
+      "NextPro is a realtime blog with a Next.js 16 App Router frontend and a Convex backend (database, file storage, and search). Auth runs on Better Auth with email and password, presence runs on the Convex presence component, and the homepage, list, and detail pages use cached server components with tag invalidation after every mutation.",
     flows: [
-      "Creating posts via the server action",
-      "Commenting via the client component CommentSection.",
-      "Instant search via the UI component SearchInput backed by Convex search indexes defined in schema.ts",
+      "Sign up or log in with email and password, then open the homepage stats and latest posts",
+      "Create a post with title, content, and cover image upload from the Create page",
+      "Browse the paginated blog list and open a post detail page with live presence",
+      "Comment on posts in realtime and delete your own comments",
+      "Edit or delete your own posts; non-owners never see the buttons and the server rejects them",
+      "Search posts from the header with two or more characters and jump straight to a result",
     ],
     techStack: [
-      "Nextjs",
-      "TypeScript",
-      "Convex",
-      "Better Auth",
-      "Presence",
-      "Image Upload",
-      "Form validation: Zod schemas + React Hook Form",
-      "UI: React, Tailwind (styles in globals.css), Radix components (ui/*)",
+      "Next.js 16 (App Router)",
+      "React 19 + TypeScript",
+      "Convex (database, storage, search)",
+      "Better Auth (email/password)",
+      "Convex Presence",
+      "Tailwind CSS 4 + Radix UI",
+      "React Hook Form + Zod",
+      "Sonner toasts",
     ],
     features: [
-      "Authenticated user flows (sign up / login) using Better Auth",
-      "Create posts with image uploads",
-      "Realtime updates",
-      "Commenting system",
-      "Realtime presence (who’s viewing a post)",
-      "Full‑text search on title/body using Convex search indexes",
-      "Responsive, accessible UI primitives",
+      "Public homepage with hero, live post/comment stats, and latest posts grid",
+      "Paginated blog list with skeletons and empty state",
+      "Post detail with cover image, metadata, and not-found state",
+      "Author-only post edit and delete with comment and storage cascade",
+      "Realtime comments with count header, empty state, and owner-only delete",
+      "Realtime presence FacePile showing who is viewing a post",
+      "Header full-text search across titles and bodies with dismiss on Escape",
+      "Image uploads via Convex storage with validation and theme toggle",
     ],
     challenges:
-      "It's my second time building an app using nextjs, I have a problem in production which is wrong input key, I fix this by check the entire code and deployment log and also the user need to hard refresh to access the main content, I'm still trying to fix this.",
+      "New posts were invisible until a hard refresh because the cached list outlived the mutation; fixed by invalidating the blog cache tag and refreshing the router cache after every create, edit, and delete.",
     image: nextProDemoThumbnail,
     thumbnailImage: nextProBlogThumbnail,
     tags: [
@@ -349,48 +353,43 @@ export const projects: Project[] = [
   },
   {
     id: "simple-inventory",
-    title: "Simple Inventory",
+    title: "Apotek POS — Pharmacy Cashier & Stock",
     description:
-      "A modern, full-stack inventory management application built with Next.js, PostgreSQL, and Prisma. Track products, monitor stock levels, and gain valuable insights into your inventory.",
-    overview: `Simple Inventory is a streamlined inventory tracking and management system designed for small to medium-sized businesses. It provides real-time product tracking, low stock alerts, and comprehensive dashboard analytics. The application features user authentication, product management, and detailed inventory analytics to help you make data-driven decisions about your inventory.`,
+      "An Indonesian-language pharmacy POS for a single store: FEFO cashier with multi-item cart, prescription gate for restricted drugs, batch-tracked stock with expiry alerts, and owner-only reports with PDF export.",
+    overview: `Apotek POS is a pharmacy point-of-sale revamp (formerly generic inventory) with Next.js 16, Prisma, and PostgreSQL. Checkout allocates stock FEFO inside a transaction, restricted drugs require a prescription number and doctor, every action writes an audit log, history is immutable with reasoned returns, and reports render charts plus an official PDF. A read-only demo route showcases 20 drugs and recent transactions without login.`,
     flows: [
-      "User navigates to /sign-in",
-      "Authenticates via Stack Auth",
-      "Redirected to /dashboard",
-      "User data fetched and authenticated",
+      "Sign in via Stack Auth or open the read-only demo route without login",
+      "Ring up a multi-item cart in Kasir with search, discounts, payment method, and thermal receipt",
+      "Add restricted drugs only after filling prescription number and doctor",
+      "Manage drugs and per-batch stock with expiry dates in Master Obat",
+      "Review low-stock and near-expiry alerts in Stok and restock from the batch page",
+      "Open Laporan as owner for revenue charts and download the official PDF",
+      "Search immutable history in Riwayat and process a reasoned return that restores stock",
     ],
     techStack: [
-      "Next.js 16 - React framework with App Router",
-      "TypeScript - Type safety and developer experience",
-      "Tailwind CSS 4 - Utility-first CSS framework",
-      "Recharts - Data visualization library",
-      "Lucide React - Icon library",
-      "Next.js API Routes - Server-side logic",
-      "Server Actions - Form submissions and data mutations",
-      "PostgreSQL - Primary database",
-      "Prisma ORM - Database query and management",
-      "Stack Auth - User authentication and management",
-      "Stack SDK - Account settings and user profiles",
-      "ESLint - Code linting",
-      "PostCSS - CSS processing",
-      "TSX - TypeScript execution",
-      "Vercel - Recommended deployment platform",
+      "Next.js 16 (App Router + Server Actions)",
+      "React 18 + TypeScript",
+      "PostgreSQL + Prisma 6",
+      "Stack Auth (cookie session)",
+      "Recharts",
+      "Tailwind CSS 4",
+      "pdf-lib + thermal print CSS",
+      "Zod validation",
     ],
     features: [
-      "User authentication and account management via Stack Auth",
-      "Product inventory tracking with SKU support",
-      "Real-time low stock alerts and notifications",
-      "Comprehensive dashboard with key metrics",
-      "Weekly product creation trend analysis",
-      "Advanced search and filtering capabilities",
-      "Pagination for efficient data browsing",
-      "Stock level status visualization",
-      "Product value calculation",
-      "User-specific inventory isolation",
-      "Responsive design for mobile and desktop",
+      "FEFO cashier with multi-item cart, discounts, and payment methods",
+      "Prescription gate blocking restricted drugs without prescription data",
+      "Batch-tracked products with expiry dates and auto-recalculated stock",
+      "Low-stock and near-expiry alerts with red and warning states",
+      "Owner-only reports with revenue charts and official PDF download",
+      "Immutable history with reasoned returns that restore batch stock",
+      "Role-based access for owner, pharmacist, and cashier",
+      "Read-only demo with seeded drugs and transactions",
+      "Audit log on every stock-changing action",
+      "Thermal 58mm receipt printing",
     ],
     challenges:
-      "Learning and manipulate charts using Recharts library, implementing pagination.",
+      "Moving from a quantity column to per-batch expiry meant checkout had to allocate FEFO inside one transaction; added nota-number retry on collision and role scoping so cashiers stay read-only on master data.",
     image: placeHolderDemo,
     thumbnailImage: simpleInventoryThumbnail,
     tags: [
@@ -407,7 +406,7 @@ export const projects: Project[] = [
       "full-stack",
       "saas",
     ],
-    demoUrl: "https://simple-inventory-three.vercel.app/",
+    demoUrl: "https://apotekku-pos.vercel.app/",
     githubUrl: "https://github.com/Ilmanmdifa/simple-inventory",
     status: "in-development",
     version: "0.1.0",
